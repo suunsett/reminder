@@ -25,7 +25,7 @@ npm install
 npm start
 ```
 
-If you want the app to run automaticly when windows starts:
+### If you want the app to run automaticly when windows starts:
 
 (run your terminal as administrator then do this)
 ### **Step 4: Build the Executable**
