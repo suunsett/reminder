@@ -2,7 +2,6 @@ const { app, Notification} = require('electron');
 
 
 app.whenReady().then(() => {
-
     setInterval(showEyeReminder, 20 * 60 * 1000);
     setInterval(showReminder, 50 * 60 * 1000);
 });
