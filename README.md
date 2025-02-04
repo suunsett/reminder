@@ -27,17 +27,17 @@ npm start
 
 If you want the app to run automaticly when windows starts:
 
-(better to run your terminal as administrator)
+(run your terminal as administrator then do this)
 ### **Step 4: Build the Executable**
 ```sh
 npm run build
 ```
-Youll have a folder named dist which has an `reminder.exe` file in it. you can put a copy of this in your Startup folder:
+Youll have a folder named dist open it and run `reminder setup` then add the `reminder.exe` to your startup folder:
 
 Press `Win + R` and type:
 ```sh
 shell:startup
 ```
-this will open startup folder now you can Copy & Paste the `.exe` file (or a shortcut to it) into this folder.
+this will open startup folder now you can Copy & Paste the `reminder.exe` file (or a shortcut to it) into this folder.
 
 Now, your app will run automatically every time you start your PC! 🎉
