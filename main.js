@@ -1,9 +1,28 @@
-const { app, Notification} = require('electron');
+const { app, Notification, powerMonitor} = require('electron');
 
+let eyeInterval
+let reminderInterval
+
+function startReminders(){
+    eyeInterval = setInterval(showEyeReminder, 20 * 60 * 1000);
+    reminderInterval = setInterval(showReminder, 50 * 60 * 1000);
+}
+
+function clearReminders(){
+    clearInterval(eyeInterval)
+    clearInterval(reminderInterval)
+}
 
 app.whenReady().then(() => {
-    setInterval(showEyeReminder, 20 * 60 * 1000);
-    setInterval(showReminder, 50 * 60 * 1000);
+    startReminders();
+
+    ['suspend', 'lock-screen'].forEach(event => {
+        powerMonitor.on(event, clearReminders)
+    })
+
+    ['resume', 'unlock-screen'].forEach(event => {
+        powerMonitor.on(event, startReminders)
+    })
 });
 
 const reminders = [
