@@ -16,13 +16,23 @@ function clearReminders(){
 app.whenReady().then(() => {
     startReminders();
 
-    ['suspend', 'lock-screen'].forEach(event => {
-        powerMonitor.on(event, clearReminders)
-    })
+    powerMonitor.on('suspend', () => {
+        clearReminders();
+    });
 
-    ['resume', 'unlock-screen'].forEach(event => {
-        powerMonitor.on(event, startReminders)
-    })
+    powerMonitor.on('resume', () => {
+        startReminders();
+    });
+
+    // Handle screen lock/unlock
+    powerMonitor.on('lock-screen', () => {
+        clearReminders();
+    });
+
+    powerMonitor.on('unlock-screen', () => {
+        startReminders();
+    });
+
 });
 
 const reminders = [
